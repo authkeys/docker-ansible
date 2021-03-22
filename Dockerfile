@@ -16,6 +16,6 @@ LABEL name="authkeys/docker-ansible" \
         org.opencontainers.image.source="https://github.com/authkeys/docker-ansible" \
         org.opencontainers.image.title="docker-ansible" \
         org.opencontainers.image.description="ansible in a container" \
-        org.opencontainers.image.version="0.2.0" \
+        org.opencontainers.image.version="0.2.1" \
         org.opencontainers.image.documentation="https://github.com/authkeys/docker-ansible" \
         org.opencontainers.image.licenses='Apache-2.0'
