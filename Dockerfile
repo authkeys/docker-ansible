@@ -1,9 +1,18 @@
 FROM ubuntu:20.04
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends curl openssh-client sshpass python3 python3-pip git-core vim jq yamllint && \
-    rm -rf /var/lib/apt/lists/*
+# hadolint ignore=DL3008
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    openssh-client \
+    sshpass \
+    python3-pip \
+    git-core \
+    vim \
+    jq \
+    && rm -rf /var/lib/apt/lists/*
+
 COPY requirements.txt /requirements/
 RUN pip3 install --no-cache-dir -r /requirements/requirements.txt
+
 WORKDIR /ansible
 COPY docker-entrypoint.sh /usr/bin/
 COPY ansible-ssh /usr/bin/
