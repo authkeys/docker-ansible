@@ -2,7 +2,7 @@
 
 ## Description
 
-This image execute `ansible` and let you pass your ansible's arguments directly to the container.   
+This image execute `ansible` and let you pass your ansible's arguments directly to the container.
 
 
 ## Usage
@@ -21,18 +21,18 @@ docker run -it --rm \
 
 You can pass some envs to the container:
 
-* `SSH_KEY` name of the SSH key you want to use.  
-  No default.  
+* `SSH_KEY` name of the SSH key you want to use.
+  No default.
   It must exists in /root/.ssh
-* `PYTHON_REQUIREMENTS` path to a file that contains the python modules needed by ansible.   
-  Default value `requirements-pip.txt` .  
+* `PYTHON_REQUIREMENTS` path to a file that contains the python modules needed by ansible.
+  Default value `requirements-pip.txt` .
   If file exists, the command `pip3 install -r <file>` is executed
-* `ANSIBLE_REQUIREMENTS` path to a file that contains ansible modules.   
-  Default value `requirements.yml` .  
+* `ANSIBLE_REQUIREMENTS` path to a file that contains ansible modules.
+  Default value `requirements.yml` .
   If file exists, the command `ansible-galaxy install --force -r <file>` is executed
 * `ANSIBLE_PRE_PLAYBOOK` path to a playbook file.
   No Default.
-  If file exists, the command `ansible-playbook ${ANSIBLE_PRE_PLAYBOOK_OPTS} <file>` is executed.  
+  If file exists, the command `ansible-playbook ${ANSIBLE_PRE_PLAYBOOK_OPTS} <file>` is executed.
   `ANSIBLE_PRE_PLAYBOOK_OPTS` contains optional arguments passed to pre-playbook execution.
 
 
