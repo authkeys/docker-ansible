@@ -7,6 +7,6 @@ jobs:
     steps:
       - uses: actions/checkout@dc323e67f16fb5f7663d20ff7941f27f5809e9b6 # v2
       - name: Lint Dockerfile with Hadolint
-        uses: hadolint/hadolint-action@d7b38582334d9ac11c12021c16f21d63015fa250 # v1.6.0
+        uses: hadolint/hadolint-action@0bc6199b82f7c6bbd2d41b82d523294df01f8b8f # v1.7.0
       - name: Lint with editorconfig-checker
         uses: editorconfig-checker/action-editorconfig-checker@main
