@@ -3,9 +3,10 @@ on: [push]
 
 jobs:
   lint:
-    name: Lint Dockerfile with Hadolint
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-      - name: Run hadolint
+      - name: Lint Dockerfile with Hadolint
         uses: hadolint/hadolint-action@v1.6.0
+      - name: Lint with editorconfig-checker
+        uses: editorconfig-checker/action-editorconfig-checker@main
