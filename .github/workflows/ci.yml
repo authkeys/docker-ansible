@@ -26,4 +26,4 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: ${{startsWith(github.ref, 'refs/tags/')}}
-          tags: user/app:latest
+          tags: authkeys/docker-ansible:${{github.ref}}
