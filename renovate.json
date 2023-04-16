@@ -5,5 +5,14 @@
     ":label(renovate)",
     ":prHourlyLimitNone",
     "helpers:pinGitHubActionDigests"
+  ],
+  "assignees": ["gizero", "macno"],
+  "platformAutomerge": true,
+  "packageRules": [
+    {
+      "description": "Automerge non-major updates",
+      "matchUpdateTypes": ["minor", "patch", "digest"],
+      "automerge": true
+    }
   ]
 }
