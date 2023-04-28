@@ -1,7 +1,8 @@
 FROM ubuntu:20.04
+# hadolint ignore=DL3008
 RUN apt-get update && \
-    apt-get install -y curl openssh-client sshpass python3 python3-pip git-core vim jq yamllint && \
-    pip3 install ansible==4.6.0 ansible-lint==5.1.3 && \
+    apt-get install -y --no-install-recommends curl openssh-client sshpass python3 python3-pip git-core vim jq yamllint && \
+    pip3 install --no-cache-dir ansible==4.6.0 ansible-lint==5.1.3 && \
     rm -rf /var/lib/apt/lists/*
 WORKDIR /ansible
 COPY docker-entrypoint.sh /usr/bin/
@@ -17,6 +18,5 @@ LABEL name="authkeys/docker-ansible" \
         org.opencontainers.image.source="https://github.com/authkeys/docker-ansible" \
         org.opencontainers.image.title="docker-ansible" \
         org.opencontainers.image.description="ansible in a container" \
-        org.opencontainers.image.version="0.3.0" \
         org.opencontainers.image.documentation="https://github.com/authkeys/docker-ansible" \
         org.opencontainers.image.licenses='Apache-2.0'
