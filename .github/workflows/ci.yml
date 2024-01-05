@@ -38,7 +38,7 @@ jobs:
         if: ${{ github.ref_type == 'tag' && vars.PUBLISH_GHCR == 'true' }}
       - name: Retrieve image metadata (base flavor)
         id: meta
-        uses: docker/metadata-action@9dc751fe249ad99385a2583ee0d084c400eee04e # v5
+        uses: docker/metadata-action@dbef88086f6cef02e264edb7dbf63250c17cef6c # v5
         with:
           images: |
             name=${{ github.repository }}
@@ -59,7 +59,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
       - name: Retrieve image metadata (terraform flavor)
         id: meta_terraform
-        uses: docker/metadata-action@9dc751fe249ad99385a2583ee0d084c400eee04e # v5
+        uses: docker/metadata-action@dbef88086f6cef02e264edb7dbf63250c17cef6c # v5
         with:
           images: |
             name=${{ github.repository }}
