@@ -13,6 +13,10 @@
       "description": "Automerge non-major updates",
       "matchUpdateTypes": ["minor", "patch", "digest"],
       "automerge": true
+    },
+    {
+      "matchPackageNames": ["ansible-lint"],
+      "automerge": false
     }
   ]
 }
