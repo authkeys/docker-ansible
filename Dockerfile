@@ -21,6 +21,10 @@ RUN pip install --no-cache-dir -r /opt/requirements.txt
 WORKDIR /ansible
 COPY docker-entrypoint.sh /usr/bin/
 COPY ansible-ssh /usr/bin/
+
+# smoke tests
+RUN ansible --version && ansible-lint --version
+
 ENTRYPOINT [ "docker-entrypoint.sh" ]
 CMD [ "--help" ]
 
@@ -36,6 +40,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" >/etc/apt/sources.list.d/hashicorp.list \
     && apt-get update && apt-get install -y --no-install-recommends terraform \
     && rm -rf /var/lib/apt/lists/*
+
+# smoke tests
+RUN terraform --version
 
 # Metadata
 LABEL name="authkeys/docker-ansible" \
