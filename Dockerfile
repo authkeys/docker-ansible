@@ -2,17 +2,21 @@ FROM ubuntu:22.04 AS base
 # hadolint ignore=DL3008
 RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
-    openssh-client \
-    sshpass \
-    python3-pip \
     git-core \
-    vim \
     jq \
     less \
+    openssh-client \
+    python3-venv \
+    sshpass \
+    vim \
     && rm -rf /var/lib/apt/lists/*
 
-COPY requirements.txt /requirements/
-RUN pip3 install --no-cache-dir -r /requirements/requirements.txt
+COPY requirements.txt /opt/
+ENV VIRTUAL_ENV=/opt/venv
+RUN python3 -m venv ${VIRTUAL_ENV}
+
+ENV PATH=${VIRTUAL_ENV}/bin:$PATH
+RUN pip install --no-cache-dir -r /opt/requirements.txt
 
 WORKDIR /ansible
 COPY docker-entrypoint.sh /usr/bin/
