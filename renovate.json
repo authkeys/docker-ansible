@@ -1,10 +1,9 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended",
+    "config:best-practices",
     ":label(renovate)",
-    ":prHourlyLimitNone",
-    "helpers:pinGitHubActionDigests"
+    ":prHourlyLimitNone"
   ],
   "assignees": ["gizero", "macno"],
   "platformAutomerge": true,
