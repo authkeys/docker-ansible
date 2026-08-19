@@ -1,4 +1,4 @@
-FROM ubuntu:26.04@sha256:4b928535d153630c63e51b8888cffa732b46c612712e6f8bc1370cbc99992558 AS base
+FROM ubuntu:26.04@sha256:6df9e8dd1eac389ebfef692c9648449adeb815d01e16e29cd6f3e50fe64ba9a6 AS base
 # hadolint ignore=DL3008
 RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
