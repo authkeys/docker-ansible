@@ -15,9 +15,13 @@ COPY docker-entrypoint.sh /usr/bin/
 COPY ansible-ssh /usr/bin/
 
 ARG ANSIBLE_HOME=/home/ansible
+ARG ANSIBLE_UID=1001
+ARG ANSIBLE_GID=1001
 
-RUN useradd --create-home --home-dir ${ANSIBLE_HOME} ansible
-USER ansible
+RUN groupadd --gid ${ANSIBLE_GID} ansible \
+    && useradd --create-home --home-dir ${ANSIBLE_HOME} --uid ${ANSIBLE_UID} --gid ${ANSIBLE_GID} ansible
+
+USER ${ANSIBLE_UID}
 
 COPY requirements.txt ${ANSIBLE_HOME}
 ENV VIRTUAL_ENV=${ANSIBLE_HOME}/venv
@@ -37,6 +41,7 @@ CMD [ "--help" ]
 
 FROM base AS terraform
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+# hadolint ignore=DL3066
 USER root
 # hadolint ignore=DL3008
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -48,7 +53,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" >/etc/apt/sources.list.d/hashicorp.list \
     && apt-get update && apt-get install -y --no-install-recommends terraform \
     && rm -rf /var/lib/apt/lists/*
-USER ansible
+
+USER ${ANSIBLE_UID}
 
 # smoke tests
 RUN terraform --version
