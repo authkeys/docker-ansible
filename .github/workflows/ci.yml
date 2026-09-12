@@ -11,7 +11,7 @@ jobs:
       - name: Lint Dockerfile with Hadolint
         uses: hadolint/hadolint-action@06be81baf89a55ffd0e24b8f04a4185738dd3387 # v3.5.0
       - name: Lint with editorconfig-checker
-        uses: editorconfig-checker/action-editorconfig-checker@5372d5f604c64786e702b20f2c90055ae57e64b1 # main
+        uses: editorconfig-checker/action-editorconfig-checker@f3685dc79be095dbcded1cb9ae4bc9a67e05fb73 # main
   build:
     needs: lint
     runs-on: ubuntu-latest
